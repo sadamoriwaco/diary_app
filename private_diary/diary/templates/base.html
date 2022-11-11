@@ -1,0 +1,59 @@
+{% load static %}
+
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+
+    <link href="{%static 'css/one-page-wonder.min.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mystyle.css' %}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div id="wrapper">
+        <!-- navigation -->
+        <nav class="navbar navbar-expand-lg navbar-customfixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'diary:index' %}">
+                    PRIVATE DIARY
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item{% block active_inquiry %}{% endblock %}">
+                            <a class="nav-link" href="{% url 'diary:inquiry' %}">INQUIRY</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Sigh up</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        {% block header %}{% endblock %}
+        {% block contents %}{% endblock %}
+        
+        
+        <footer class="py-5 bg-black">
+            <div class="container">
+                <p class="m-0 text-center text-white small">Copyright &copy; PRIVATE DIARY</p>
+            </div>
+        </footer>
+        
+        <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    </div>
+</body>
+</html>
