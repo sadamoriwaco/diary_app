@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+from django.contrib.messages import constants as messages
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -166,3 +167,12 @@ LOGGING={
 }
 
 LOGIN_REDIRECT_URL ='diary:diary_list'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+MESSAGE_TAGS = {
+    messages.ERROR:'alert alert-danger',
+    messages.WARNING:'alert alert-warning',
+    messages.SUCCESS:'alert alert-success',
+    messages.INFO:'alert alert-info',
+}
