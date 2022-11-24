@@ -164,3 +164,5 @@ LOGGING={
         },
     }
 }
+
+LOGIN_REDIRECT_URL ='diary:diary_list'
