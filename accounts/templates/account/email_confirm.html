@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}CONFIRM SIGN UP{% endblock %}
+
+{% block active_login %}active{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style">
+            <h1>SIGN UP</h1>
+
+            {% if confirmation %}
+            <p>PUSH BUTTON</p>
+            <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+                {% csrf_token %}
+                <button class="btn btn-primary" type="submit">COMMIT</button>
+            </form> 
+            {% else %}
+                {% url 'account_email' as email_url %}
+                <p>TIME OUT ERROR<a href="{{ email_url }}">RE SUBMIT</a>.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

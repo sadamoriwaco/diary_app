@@ -35,12 +35,12 @@ class DiaryListView(LoginRequiredMixin,generic.ListView):
         diaries = Diary.objacts.filter(user=self.request.user).oder_by('-created_at')
         return diaries
 
-class DetailView(genneric.DetailView):
+class DetailView(generic.DetailView):
     model = Diary
     slug_field = "title"
     slug_url_kwarg = 'title'
 
-class DiaryDetailView(LoginRequiredMixin,genneric.DetailView):
+class DiaryDetailView(LoginRequiredMixin,generic.DetailView):
     model = Diary
     template_name = 'diary_detail.html'
     pk_url_kwarg = 'id'
