@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}LOGIN{% endblock %}
+
+{% block active_login %}active{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style">
+            <h1>LOGIN</h1>
+            <form method="post" action="{% url 'account_login' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_ name }}" value="{{ redirect_field_ value }}"/>
+                {% endif %}
+                <button class="btn btn-primary" type="submit">LOGIN</button>
+                <p><a class="button secondaryAction" href="{% url 'account_reset_password' %}">FOGOT EMAIL?</a></p>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
