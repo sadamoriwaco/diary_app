@@ -26,7 +26,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # 'django.contrib.admin',
+    # 'django.contrib.admin', # 消さないとエラーなる
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -170,7 +170,11 @@ LOGGING={
     }
 }
 
+# SITE_ID = 1     #追加
+# LOGIN_URL = 'login/' #追加
+
 LOGIN_REDIRECT_URL ='diary:diary_list'
+# LOGOUT_REDIRECT_URL = '/' #追加
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
