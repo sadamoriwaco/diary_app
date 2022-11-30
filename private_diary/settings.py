@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'diary',
-    'accounts.apps.AccountsConfig',
+    'accounts',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -189,7 +189,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 ACCOUNT_AUTENICATION_METHOD = 'email'
-ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
 
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_EMAIL_REQUIRED = True
@@ -198,3 +198,6 @@ LOGIN_REDIRECT_URL = 'dairy:index'
 ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
 
 ACCOUNT_LOGOUT_ON_GET = True
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'
