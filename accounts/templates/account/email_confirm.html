@@ -13,11 +13,11 @@
             <p>PUSH BUTTON</p>
             <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
                 {% csrf_token %}
-                <button class="btn btn-primary" type="submit">COMMIT</button>
+                <button class="btn btn-primary" type="submit">LOGIN</button>
             </form> 
             {% else %}
                 {% url 'account_email' as email_url %}
-                <p>TIME OUT ERROR<a href="{{ email_url }}">RE SUBMIT</a>.</p>
+                <p>TIME OUT ERROR<a href="{{ email_url }}">RE FRESH</a>.</p>
             {% endif %}
         </div>
     </div>

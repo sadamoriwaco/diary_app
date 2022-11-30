@@ -14,7 +14,9 @@
     <link href="{%static 'css/one-page-wonder.min.css' %}" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/mystyle.css' %}">
-    {% block head %}{% endblock %}
+    <title>
+        {% block head %}{% endblock %}
+    </title>
 </head>
 <body>
     <div id="wrapper">
@@ -32,11 +34,11 @@
                         <li class="nav-item{% block active_inquiry %}{% endblock %}">
                             <a class="nav-link" href="{% url 'diary:inquiry' %}">INQUIRY</a>
                         </li>
-                        <!-- {% if user.is_authenticated %} -->
+                        {% if user.is_authenticated %}
                         <li class="nav-item{% block active_diary_list %}{% endblock %}">
                             <a class="nav-link" href="{% url 'diary:diary_list' %}">DIARY LIST</a>
                         </li>
-                        <!-- {% endif %} -->
+                        {% endif %}
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         {% if user.is_authenticated %}
@@ -44,9 +46,9 @@
                             <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                         {% else %}
                         <li class="nav-item {% block active_signup %}{% endblock %}">
-                            <a class="nav-link" href="{% url 'account_signup' %}">Sigh up</a>
+                            <a class="nav-link" href="{% url 'account_signup' %}">Sighup</a>
                         <li class="nav-item {% block active_login %}{% endblock %}">
-                            <a class="nav-link" href="{% url 'account_login %}">Login</a>
+                            <a class="nav-link" href="{% url 'account_login' %}">Login</a>
                         </li>
                         {% endif %}
                     </ul>
