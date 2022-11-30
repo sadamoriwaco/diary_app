@@ -170,7 +170,7 @@ LOGGING={
     }
 }
 
-# SITE_ID = 1     #追加
+SITE_ID = 1     #追加(必須)
 # LOGIN_URL = 'login/' #追加
 
 LOGIN_REDIRECT_URL ='diary:diary_list'
