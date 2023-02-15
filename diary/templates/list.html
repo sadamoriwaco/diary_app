@@ -17,7 +17,7 @@
                 <div class="clearfix">
                     <a class="btn btn-primary float-right" href="{% url 'diary:create' %}">NEW CREATE</a>
                 </div>
-                {{ request.user }}
+
                 {% for diary in object_list %}
                 <div class="post-preview">
                     <a href="{% url 'diary:detail' diary.id %}">
