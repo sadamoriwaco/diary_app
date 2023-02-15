@@ -28,12 +28,12 @@ class InquiryView(generic.FormView):
 
 class DiaryListView(LoginRequiredMixin,generic.ListView):
     model = Diary
-    template_name = 'diary_list.html'
+    template_name = 'list.html'
     paginate_by = 2
 
-    def get_queryset(self):
-        diaries = Diary.objacts.filter(user=self.request.user).oder_by('-created_at')
-        return diaries
+    # def get_queryset(self):
+    #     diaries = Diary.objacts.filter(user=self.request.user).oder_by('-created_at')
+    #     return diaries
 
 class DetailView(generic.DetailView):
     model = Diary
@@ -42,12 +42,12 @@ class DetailView(generic.DetailView):
 
 class DiaryDetailView(LoginRequiredMixin,generic.DetailView):
     model = Diary
-    template_name = 'diary_detail.html'
+    template_name = 'detail.html'
     pk_url_kwarg = 'id'
 
 class DiaryCreateView(LoginRequiredMixin,generic.CreateView):
     model =Diary
-    template_name = 'diary_create.html'
+    template_name = 'create.html'
     form_class = DiaryCreateForm
     success_url = reverse_lazy
 
@@ -64,11 +64,11 @@ class DiaryCreateView(LoginRequiredMixin,generic.CreateView):
 
 class DiaryUpdateView(LoginRequiredMixin,generic.UpdateView):
     model = Diary
-    template_name='diary_update.html'
+    template_name='update.html'
     form_class=DiaryCreateForm
 
     def get_success_url(self):
-        return reverse_lazy('diary:diary_detail',kwargs={'pk':self.kwargs['pk']})
+        return reverse_lazy('diary:detail',kwargs={'pk':self.kwargs['pk']})
 
     def form_valid(self, form):
         messages.success(self.request,'UPDATED')
@@ -80,8 +80,8 @@ class DiaryUpdateView(LoginRequiredMixin,generic.UpdateView):
 
 class DiaryDeleteView(LoginRequiredMixin,generic.DateDetailView):
     model = Diary
-    template_name = 'diary_delete.html'
-    success_url = reverse_lazy('diary:diary_list')
+    template_name = 'delete.html'
+    success_url = reverse_lazy('diary:list')
 
     def delete(self,request,*args,**kwargs):
         messages.succcess(self.request,"DELETED")

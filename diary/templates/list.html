@@ -3,7 +3,7 @@
 
 {% block title %}日記一覧|DiaryList{% endblock %}
 
-{% block active_diary_list %}active{% endblock %}
+{% block active_list %}active{% endblock %}
 
 {% block head %}
 <Link href="{% static 'css/clean-blog.min.css' %}" rel="stylesheet">
@@ -15,11 +15,11 @@
         <div class="my-div-style w-100">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="clearfix">
-                    <a class="btn btn-primary float-right" href="{% url 'dairy:diary_create' %}">NEW CREATE</a>
+                    <a class="btn btn-primary float-right" href="{% url 'diary:create' %}">NEW CREATE</a>
                 </div>
-                {% for diary in diary_list %}
+                {% for diary in list %}
                 <div class="post-preview">
-                    <a href="{% url 'diary:diary_detail' diary.pk %}">
+                    <a href="{% url 'diary:detail' diary.pk %}">
                         <h2 class="post-title">
                             {{ diary.title }}
                         </h2>
