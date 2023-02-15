@@ -1,7 +1,6 @@
 from django.db import models
 from accounts.models import CustomUser
 
-# Create your models here.
 class Diary(models.Model):
     user = models.ForeignKey(CustomUser,verbose_name='ユーザー',on_delete=models.PROTECT)
     title= models.CharField(verbose_name='タイトル',max_length=40)
