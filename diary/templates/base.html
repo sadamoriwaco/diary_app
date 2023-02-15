@@ -1,6 +1,7 @@
 {% load static %}
 
 <html lang="ja">
+        <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
 
 <head>
     <meta charset="utf-8">
@@ -17,6 +18,7 @@
     <title>
         {% block head %}{% endblock %}
     </title>
+    <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
 </head>
 <body>
     <div id="wrapper">
@@ -46,7 +48,7 @@
                             <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                         {% else %}
                         <li class="nav-item {% block active_signup %}{% endblock %}">
-                            <a class="nav-link" href="{% url 'account_signup' %}">Sighup</a>
+                            <a class="nav-link" href="{% url 'account_signup' %}">Signup</a>
                         <li class="nav-item {% block active_login %}{% endblock %}">
                             <a class="nav-link" href="{% url 'account_login' %}">Login</a>
                         </li>
