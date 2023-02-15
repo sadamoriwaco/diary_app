@@ -3,6 +3,7 @@ from accounts.models import CustomUser
 
 class Diary(models.Model):
     user = models.ForeignKey(CustomUser,verbose_name='ユーザー',on_delete=models.PROTECT)
+    # user = models.CharField(verbose_name='ユーザー',max_length=200)
     title= models.CharField(verbose_name='タイトル',max_length=40)
     content= models.TextField(verbose_name='本文',blank=True,null=True)
     photo1 = models.ImageField(verbose_name='写真1',blank=True,null=True)
