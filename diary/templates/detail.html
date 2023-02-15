@@ -35,15 +35,15 @@
             <div class="col-3">
                 {% if object.photo1 %}
                     <img src="{{ object.photo1.url }}" width="200">
-                {% engif %}
+                {% endif %}
             <div class="col-3">
                 {% if object.photo2 %}
                     <img src="{{ object.photo2.url }}" width="200">
-                {% engif %}
+                {% endif %}
             <div class="col-3">
                 {% if object.photo3 %}
                     <img src="{{ object.photo3.url }}" width="200">
-                {% engif %}
+                {% endif %}
             </div>
         </div>
 
@@ -68,8 +68,8 @@
                 {{ object.updated_at }}
             </div>
         </div>
-        <a class="btn btn-success mt-5 mb-3" href="{% url 'diary:diary_update' object.pk %}">EDIT</a>
-        <a class="btn btn-success mt-5 mb-3" href="{% url 'diary:diary_delete' object.pk %}">DELETE</a>
+        <a class="btn btn-success mt-5 mb-3" href="{% url 'diary:update' object.pk %}">EDIT</a>
+        <a class="btn btn-success mt-5 mb-3" href="{% url 'diary:delete' object.pk %}">DELETE</a>
     </div>
 </div>
 {% endblock %}

@@ -23,7 +23,7 @@ class InquiryView(generic.FormView):
     def form_valid(self, form):
         form.send_email()
         messages.success(self.request,'SUBMIT')
-        logger.info('Inquiry sent by {}'.format(form.cleaned_data['name']))
+        # logger.info('Inquiry sent by {}'.format(form.cleaned_data['name']))
         return super().form_valid(form)
 
 class DiaryListView(LoginRequiredMixin,generic.ListView):
@@ -31,9 +31,10 @@ class DiaryListView(LoginRequiredMixin,generic.ListView):
     template_name = 'list.html'
     paginate_by = 2
 
-    # def get_queryset(self):
-    #     diaries = Diary.objacts.filter(user=self.request.user).oder_by('-created_at')
-    #     return diaries
+    def get_queryset(self):
+        diaries = Diary.objects.filter(user=self.request.user).order_by('-created_at')
+        print(diaries)
+        return diaries
 
 class DetailView(generic.DetailView):
     model = Diary
@@ -43,17 +44,19 @@ class DetailView(generic.DetailView):
 class DiaryDetailView(LoginRequiredMixin,generic.DetailView):
     model = Diary
     template_name = 'detail.html'
-    pk_url_kwarg = 'id'
+    # pk_url_kwarg = 'id'
 
 class DiaryCreateView(LoginRequiredMixin,generic.CreateView):
     model =Diary
     template_name = 'create.html'
     form_class = DiaryCreateForm
-    success_url = reverse_lazy
+    success_url = reverse_lazy('diary:list')
 
     def form_valid(self,form):
         diary = form.save(commit=False)
+
         diary.user = self.request.user
+        # diary.user = self.request.user.id
         diary.save()
         messages.success(self.request,'SUBMIT')
         return super().form_valid(form)
@@ -78,7 +81,7 @@ class DiaryUpdateView(LoginRequiredMixin,generic.UpdateView):
         messages.error(self.request,'ERROR')
         return super().form_invalid(form)
 
-class DiaryDeleteView(LoginRequiredMixin,generic.DateDetailView):
+class DiaryDeleteView(LoginRequiredMixin,generic.DeleteView):
     model = Diary
     template_name = 'delete.html'
     success_url = reverse_lazy('diary:list')
